@@ -1,0 +1,151 @@
+#!/bin/bash
+
+# File and Directory Management
+cd /path/to/directory  # Navigate to a directory
+cd ~                   # Go to home directory
+cd ..                  # Move up one directory
+
+ls                     # List files in the current directory
+ls -l                  # List files with detailed information
+ls -a                  # List all files including hidden files
+
+mkdir new_directory    # Create a new directory
+rmdir directory_name   # Remove an empty directory
+rm -r directory_name   # Remove a directory and its contents
+
+touch file.txt         # Create an empty file
+rm file.txt            # Remove a file
+
+cp source_file destination    # Copy a file
+mv old_name new_name          # Rename or move a file
+
+# System and Process Management
+sudo apt update               # Update package lists
+sudo apt upgrade              # Upgrade installed packages
+
+apt search package_name       # Search for a package
+
+sudo apt install package_name # Install a package
+sudo apt remove package_name  # Remove a package
+
+top                           # Display tasks and system information
+htop                          # Improved version of top (if installed)
+df -h                         # Display disk space usage
+free -h                       # Display memory usage
+
+# Conda
+conda create --name env_name python=3.8        # Create a Conda environment
+conda activate env_name                        # Activate Conda environment
+conda deactivate                               # Deactivate Conda environment
+conda env list                                 # List Conda environments
+conda install package_name                     # Install a package in Conda environment
+conda remove --name env_name --all             # Remove Conda environment
+
+# Sudo
+sudo command                                   # Run command as superuser
+sudo nano /etc/filename                        # Edit protected file
+sudo usermod -aG sudo username                 # Add user to sudoers
+
+# Nano
+nano filename                                  # Open file in Nano
+# Ctrl + O (Save), Enter (Confirm), Ctrl + X (Exit) after editing in Nano
+
+# Miniconda
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh  # Download Miniconda
+bash Miniconda3-latest-Linux-x86_64.sh                                       # Install Miniconda
+conda init                                           # Initialize Conda
+
+# Virtual Environment (venv)
+python3 -m venv env_name                     # Create a virtual environment
+source env_name/bin/activate                 # Activate virtual environment
+deactivate                                   # Deactivate virtual environment
+
+# Git Version Control
+git clone https://github.com/user/repository.git  # Clone a repository
+git status                                       # Check the status of the repository
+git add .                                        # Stage changes
+git commit -m "Commit message"                   # Commit changes
+git push origin branch_name                      # Push changes to remote repository
+git pull origin branch_name                      # Pull changes from remote repository
+
+# SSH and Remote Server Management
+ssh user@remote_server_ip                        # Connect to remote server
+scp local_file user@remote_server:/path/to/destination  # Copy file to remote server
+scp user@remote_server:/path/to/file local_destination  # Copy file from remote server
+
+# Docker
+docker pull image_name                           # Pull a Docker image
+docker run -it image_name                        # Run a Docker container interactively
+docker ps                                        # List running containers
+docker stop container_id                         # Stop a running container
+docker rm container_id                           # Remove a container
+docker rmi image_id                              # Remove an image
+
+
+#!/bin/bash
+
+# SSH and Remote Server Management
+ssh user@remote_server_ip                        # Connect to remote server
+scp local_file user@remote_server:/path/to/destination  # Copy file to remote server
+scp user@remote_server:/path/to/file local_destination  # Copy file from remote server
+
+# Rsync for Efficient File Transfer
+rsync -avz local_directory/ user@remote_server:/path/to/remote_directory/  # Sync local directory to remote server
+rsync -avz user@remote_server:/path/to/remote_directory/ local_directory/  # Sync remote directory to local machine
+
+# Remote Command Execution
+ssh user@remote_server_ip 'bash -s' < local_script.sh   # Execute a local script on the remote server
+ssh user@remote_server_ip "command_to_run"              # Run a single command on the remote server
+
+# Using screen for Persistent Sessions
+screen -S session_name                                  # Start a new screen session
+screen -ls                                              # List active screen sessions
+screen -r session_name                                  # Reattach to a screen session
+screen -d session_name                                  # Detach from a screen session
+screen -X -S session_name quit                          # Kill a screen session
+
+# GPU Management
+nvidia-smi                                              # Show GPU usage and statistics
+watch -n 1 nvidia-smi                                   # Continuously monitor GPU usage
+
+
+# Other Useful Terminal Commands for Ubuntu
+
+# Find Commands
+find /path/to/search -name "filename"            # Find files by name
+find /path/to/search -type f -size +100M         # Find files larger than 100MB
+
+# Disk Usage and Management
+du -sh /path/to/directory                        # Display the size of a directory
+df -h                                            # Display disk space usage
+sudo lsof +L1                                    # List open files that have been deleted
+
+# Network Commands
+ifconfig                                         # Display network configuration
+ping google.com                                  # Check network connectivity
+netstat -tulnp                                   # Display network connections
+
+# Process Management
+ps aux                                           # Display all running processes
+kill -9 PID                                      # Forcefully kill a process by PID
+htop                                             # Interactive process viewer
+
+# File Compression
+tar -czvf archive_name.tar.gz /path/to/directory  # Compress a directory into a .tar.gz file
+tar -xzvf archive_name.tar.gz                     # Decompress a .tar.gz file
+
+# Scheduling Tasks with Cron
+crontab -e                                       # Edit the current user's cron jobs
+# Example cron job entry (run a script every day at 2 AM):
+# 0 2 * * * /path/to/script.sh
+
+# System Information
+uname -a                                         # Display system information
+lsb_release -a                                   # Display Linux distribution information
+
+# User Management
+sudo adduser new_username                        # Add a new user
+sudo passwd username                             # Change user password
+sudo userdel username                            # Delete a user
+sudo usermod -aG groupname username              # Add user to a group
+
